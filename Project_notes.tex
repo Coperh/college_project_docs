@@ -59,7 +59,13 @@
 		\item \href{https://docs.juce.com/master/tutorial_dsp_introduction.html}{Juce DSP}
 		\item \href{https://www.youtube.com/watch?v=HJ_-5mqUZ70}{Digital Signal Processing (DSP) Tutorial}
 	\end{itemize}
-
+	
+	\subsection{Fast Fourier Transform Algorithm}
+	Faster version of the Discrete Fourier transform.
+	\begin{itemize}
+		\item Transforms waves into its components or formula
+		\item The inverse can be used to create sound waves from 
+	\end{itemize}
 	
 	\subsection{Waves}
 	\begin{itemize}
@@ -68,12 +74,25 @@
 		\item Triangle $\Rightarrow$ map $-\pi$ -- 0 to -1 -- 1 and 0 -- $\pi$ to 1 -- -1
 	\end{itemize}
 	
-
-	\subsection{Fast Fourier Transform Algorithm}
-	Faster version of the Discrete Fourier transform.
+	
+	\subsection{Wave Shaping}
 	\begin{itemize}
-		\item Transforms waves into its components or formula
-		\item The inverse can be used to create sound waves from 
+		\item \href{https://docs.juce.com/master/structdsp_1_1WaveShaper.html}{dsp::WaveShaper}
 	\end{itemize}
+	Transforming one signal into another using a transfer function.
+
+	
+	\begin{itemize}
+		\item $sin(x)$ can be converted to a square wave using signum transfer function $sgn(sin(x))$
+		\item This creates a too perfect function and thus we use a hyperbolic tangent transfer function $tanh(sin(x))$
+		\item To create a square, boost the singal into clipping before using the function $tanh(n*sin(x))$
+	\end{itemize}
+	
+	\subsection{Convolution}
+	\begin{itemize}
+		\item \href{https://docs.juce.com/master/classdsp_1_1Convolution.html}{dsp::Convolution}
+	\end{itemize}
+	\textbf{Simulating the reverberation characteristics} of a certain space by using a \textbf{pre-recorded impulse} response that describes the properties of the space in question. This process allows us to apply any type of acoustic profile to an incoming signal by convolving, \textbf{essentially multiplying every sample of data against the impulse response samples} to create the combined output.
+	
 	
 \end{document}
