@@ -15,6 +15,8 @@
 	urlcolor=cyan,
 }
 
+\usepackage{listings}
+
 
 \begin{document}
 
@@ -52,6 +54,26 @@
 	 	\item \href{https://docs.juce.com/master/tutorial_dsp_delay_line.html}{Juce String Model}
 	 \end{itemize}
 
+\section{Digital Signal Processing}
+	\begin{itemize}
+		\item \href{https://docs.juce.com/master/tutorial_dsp_introduction.html}{Juce DSP}
+		\item \href{https://www.youtube.com/watch?v=HJ_-5mqUZ70}{Digital Signal Processing (DSP) Tutorial}
+	\end{itemize}
 
+	
+	\subsection{Waves}
+	\begin{itemize}
+		\item Sin Wave $\Rightarrow$ std::sin (x)
+		\item Saw Tooth $\Rightarrow$ map $-\pi$ -- $\pi$ to -1 -- 1 (juce::MathConstants$<$double$>$::pi)
+		\item Triangle $\Rightarrow$ map $-\pi$ -- 0 to -1 -- 1 and 0 -- $\pi$ to 1 -- -1
+	\end{itemize}
+	
+
+	\subsection{Fast Fourier Transform Algorithm}
+	Faster version of the Discrete Fourier transform.
+	\begin{itemize}
+		\item Transforms waves into its components or formula
+		\item The inverse can be used to create sound waves from 
+	\end{itemize}
 	
 \end{document}
