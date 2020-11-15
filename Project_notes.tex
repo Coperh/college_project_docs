@@ -16,7 +16,28 @@
 }
 
 \usepackage{listings}
+\usepackage{color}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=C++,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
 
 \begin{document}
 
@@ -94,6 +115,18 @@
 		\item \href{https://docs.juce.com/master/classdsp_1_1Convolution.html}{dsp::Convolution}
 	\end{itemize}
 	\textbf{Simulating the reverberation characteristics} of a certain space by using a \textbf{pre-recorded impulse} response that describes the properties of the space in question. This process allows us to apply any type of acoustic profile to an incoming signal by convolving, \textbf{essentially multiplying every sample of data against the impulse response samples} to create the combined output.
+	
+	
+	\subsection{Keyboard State}
+	\begin{itemize}
+		\item \href{https://docs.juce.com/develop/classMidiKeyboardState.html}{MidiKeyboardState}
+	\end{itemize}
+	Used by the keyboard component to get midi input. Hosted in the plugin processor and accessed by the keyboard component using the processor class.
+	\begin{lstlisting}
+	// gets midi buffer from keyboar state and inserts it into current buffer
+	keyboardState.processNextMidiBuffer(midiMessages, 0, buffer.getNumSamples(),true);
+	\end{lstlisting}
+
 
 \section{Instruments}
 	\subsection{Instrument Ideas}
