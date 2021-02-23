@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 
 \title{Project Report}
@@ -21,7 +21,7 @@
 	\tableofcontents
 	
 	
-	\section{Introduction}
+\section{Introduction}
 	
 	\begin{itemize}
 		\item Create a virtual instrument for the Uillean pipes
@@ -30,12 +30,15 @@
 	\end{itemize}
 	
 	
-	\section{Analysis}
+\section{Analysis}
 	
 	
 	\subsection{How Uillean Pipes Work}	
 	
-	\subsection{Physical Modelling Synthesis}
+	
+	\subsection{ Simulating Instruments }
+	
+	\subsubsection{Physical Modelling Synthesis}
 	\begin{itemize}
 		\item Original Plan
 		\item Mathematical Model of the Sound Wave (not simulation)
@@ -44,28 +47,67 @@
 		\item out of scope for the project
 	\end{itemize}
 
-	\subsection{Subtractive Synthesis}
+	\subsubsection{Subtractive Synthesis}
 	\begin{itemize}
 		\item Maynooth university thingy
 		\item reasonable successful in pre-made synths
 		\item would end up created a regular but limited subtractive syntheses
 	\end{itemize}
 	
-	\subsection{Additive Synthesis}
+	\subsubsection{Additive Synthesis}
 	\begin{itemize}
 		\item Sounds made up of many different sine waves
 		\item Fast-Fourier transform
 		\item need samples, too complex
 	\end{itemize}
 	
-	\subsection{Sampling}
+	\subsubsection{Sampling}
 	\begin{itemize}
 		\item simplest
 		\item relies on quality of samples
 	\end{itemize}
 
+
+	\subsection{Frameworks}
+	There are a few different interfaces that allow plugins to communicate with digital audio workstations(DAW). 
+	The most popular is VST or Virtual Studio Technology, developed by Steinberg, a well know virtual instrument and audio application developer. 
+	It is a cross platform interface developed for Steinberg's DAW, Cubase and later licensed to other plugin and DAW creators.
+	The vast majority of instrument and effect plugins you can buy today will either be in VST2 or VST3 format. 
 	
-	\section{Design}
+	The second most popular is Audio Unit (AU), originally developed by Apple for their Logic Pro DAW and is now integrated into MacOS and IOS. 
+	Many DAWs on MacOS both support VST and AU, and they are, for the most part, interchangeable. 
+	It is possible to develop the instrument directly using these instruments, implementing everything yourself. However, for the purpose of this project, 
+	higher level frameworks will be used.
+	
+	The first framework that was found is iPlug2. It is a free and open source framework based on the original iPlug released in 2008, improving on interface design 
+	and adding support for distributed plugin formats. IPlug provides many classes for digital signal processing used in audio applications and user interfaces which can be
+	compiled to both VST and AU, as well as stand-alone applications and the new Web Audio Module, allowing you to host instruments online.
+	However, being reactively new, released in 2018, there is not much documentation available and to understand what the code does, you would have to dig through the source code.
+	For someone completely new to audio programming, the lack of documentation and tutorials makes creating a virtual instrument in a reasonable amount of time difficult.
+	
+	The second framework is Juce and this is the one that was chosen. It is free to use for students, in open source projects and personally up to \$50,000 in revenue and 
+	requires a license for other uses.
+	As with iPlug, Juce can be compiled to many different plugin interfaces and a stand-alone application. What differs from iPlug is that Juce has much better documentation.
+	There is an extensive number of classes that covers everything needed for audio programming and building user interfaces. 
+	Each class is documented and gives a good explanation of what each class does. On top of that, Juce is reactively popular in the audio programming community and there
+	are numerous tutorials for this framework. The only downside is that these tutorials tend to be for the older Juce 5 when Juce 6 was released in June 2020 and the official
+	tutorials used audio applications rather than plugins which have different formats.
+	
+
+	
+\section{Design}
+	
+	
+	\subsection{Plugin Layout}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	\subsection{High Level}
 	\begin{itemize}
@@ -85,9 +127,9 @@
 		\item 3 samplers, one for each components
 		\item one sample can be pitched
 	\end{itemize}
-
 	
-	\section{Implementation}
+		
+\section{Implementation}
 	
 	\begin{itemize}
 		\item classes
@@ -98,6 +140,30 @@
 		\item importing binary files
 		\item buffers
 	\end{itemize}
+
+	\subsection{Juce Plugin}
+	2 sections
+	
+	Plugin Editor
+	\begin{itemize}
+		\item UI
+		\item buttons
+		\item sliders
+		\item Reference to processor
+	\end{itemize}
+	
+	
+	Plugin Editor
+	\begin{itemize}
+		\item UI
+		\item buttons
+		\item sliders
+		\item Reference to processor
+	\end{itemize}
+	
+	
+	
+
 	
 
 	
