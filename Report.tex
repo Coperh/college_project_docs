@@ -24,7 +24,7 @@
 \section{Introduction}
 	
 	\begin{itemize}
-		\item Create a virtual instrument for the Uillean pipes
+		\item Create a virtual instrument for the Uilleann pipes
 		\item not many there in advance
 		\item Create a VST plug-in that can be used in digital audio work stations
 	\end{itemize}
@@ -54,18 +54,33 @@
 		\item would end up created a regular but limited subtractive syntheses
 	\end{itemize}
 	
-	\subsubsection{Additive Synthesis}
-	\begin{itemize}
-		\item Sounds made up of many different sine waves
-		\item Fast-Fourier transform
-		\item need samples, too complex
-	\end{itemize}
+	
 	
 	\subsubsection{Sampling}
-	\begin{itemize}
-		\item simplest
-		\item relies on quality of samples
-	\end{itemize}
+	Sampling is the intuitive and obvious way to create virtual instruments. It involves recording or sampling real instruments in high quality. Then when
+	pressing a key in the virtual instrument, the sample is played back. It sounds simple but in general is not. You can record one sample for each note and assign them
+	to their corresponding key. However, notes can be played at different lengths and there cannot be a sample for every possible note length. There needs to be a loop and 
+	getting near perfect loops can be difficult. But notes are not just loops. When a note is hit, they have an attack and when let go, a release. The attack needs to transition
+	to the loop and the loop to the decay seamlessly. For many instruments, legato needs to be taken into account where notes played together directly after one another
+	can affect the pitch of the attack and decay.
+	
+	Generally, sampler instruments tend to have many samples per note, each corresponding to a certain part of the note. Of course, audio files are large and having lots of samples
+	tends to make sampler instruments much bigger in size. On the other hand, they have better performance than the other calculation heavy synthesis. It is possible to reduce
+	the amount of samples you need by using pitch shifting on a subset of samples. Notes that are one octave apart are either double or half the frequency of each other. It is 
+	fairly easy to do these pitch shifts as you either skip a sample point or double it. When trying to pitch to different notes, it creates much more artefacts and similarly 
+	does pitching up and down many octaves. It is possible to reduce the number of samples to a multiple of twelve corresponding to each note in the chromatic scale. 
+	It should be noted that pitching up will decrease the length of the sample and pitching down will increase it.
+	
+
+	\subsubsection{Other Synthesis}
+	It is possible to create an instrument using additive synthesis. This involves having many waves, usually sine, and playing them all at once to create a complex sound.
+	There is a fundamental frequency carrying the note and different harmonics added at different amplitudes along the harmonic scale. According to the Fourier transform, a wave 
+	can be represented as a series of sine and cosine waves. Using the transform, it is possible to manually add those waves and there would be a point where it sounds good
+	enough. It is uncertain how easy it would be to do this in practice
+	
+	Another way that was not looked into, but could be possible is frequency modulation. This involves modulating wave forms by other wave forms. Frequency modulation is
+	difficult to understand and visualize, so no research was done on it.
+	
 
 
 	\subsection{Frameworks}
@@ -165,14 +180,31 @@
 	
 
 	
-
-	
 	\section{Evaluation}
 	
 	\section{Conclusions}
 	
 	\section{Appendix}
-	\section{Appendix 1 - How to use Juce}
-	\section{Appendix 1 - Music Example}
+	\begin{itemize}
+		\item Appendix 1 - How to use Juce -- How to setup vst?
+		\item Appendix 1 - Music Example
+	\end{itemize}
+
+	\subsection{Things to explain? (Notes)}
+	Things that people might not understand and may need an explanation
+	\begin{itemize}
+		\item ADRS envelope -- explain at the beginning or in subtractive, is in Sampling
+		\item fundamental, harmonic, harmonic scale -- in Other Synthesis
+	\end{itemize}
+
+	\subsection{References Maybe}
+	\begin{itemize}
+		\item samplers -- https://ask.audio/articles/understanding-the-architecture-of-sample-based-virtual-instruments
+		\item subtractive -- Subtractive Synthesis Modelling of the Irish Uilleann Pipes - ISSTC 2012
+	\end{itemize}
+	
+
+
+
 	
 \end{document}
