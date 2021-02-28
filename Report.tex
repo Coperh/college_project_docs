@@ -37,6 +37,8 @@
 	
 	
 	\subsection{ Simulating Instruments }
+	The main goal of the project is to simulate the uilleann pipes so that they can be used as a virtual instrument. There are many possible ways to do this.
+	
 	
 	\subsubsection{Physical Modelling Synthesis}
 	\begin{itemize}
@@ -112,26 +114,24 @@
 	
 \section{Design}
 	
+	The uilleann pipes are to be implemented as
 	
-	\subsection{Plugin Layout}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	\subsection{High Level}
 	\begin{itemize}
 		\item Drone and chanter
 		\item voices
-		\item juce
 	\end{itemize}
-
-	\subsection{Controls}
+	
+	
+	\subsection{Juce Plugin}
+	The synthesiser was implemented as a Juce plugin. This is an application specifically designed for creating plugins for DAWs. 
+	It can be compiled to all the plugin formats as well as a stand-alone application, which is useful for testing. Juce uses standard C++.
+	
+	The plugin is split into two sections: the plugin editor and the plugin processor. The plugin editor is where all the user interface elements go. 
+	The dimensions and colour of the plugin window is defined here. All on-screen controls like sliders and buttons are declared here as well as their size and position on screen.
+	The plugin processor on the other hand is where all the sound processing happens. The processor has an input buffer, reads data if necessary, then writes the processed
+	audio to said buffer. Generally the plugin processor calls other classes and functions rather than everything being written in the once processor file.
+		
+	\subsection{Juce Controls}
 	\begin{itemize}
 		\item Enable, disable drone
 		\item change key maybe
@@ -180,26 +180,35 @@
 	
 
 	
-	\section{Evaluation}
+\section{Evaluation}
 	
-	\section{Conclusions}
+\section{Conclusions}
 	
-	\section{Appendix}
+\section{Appendix}
 	\begin{itemize}
 		\item Appendix 1 - How to use Juce -- How to setup vst?
 		\item Appendix 1 - Music Example
 	\end{itemize}
 
-	\subsection{Things to explain? (Notes)}
+
+\section{Notes (temporary)}
+	\subsection{Things to explain? }
 	Things that people might not understand and may need an explanation
 	\begin{itemize}
 		\item ADRS envelope -- explain at the beginning or in subtractive, is in Sampling
 		\item fundamental, harmonic, harmonic scale -- in Other Synthesis
+		\item does juce plugin description make sense and is it enough? -- Juce Plugin 3.2
+	\end{itemize}
+
+	\subsection{Improvements}
+	\begin{itemize}
+		\item are there too many titles? hide subsections?
+		\item analysis - talk more about aims. For example in Frameworks.
 	\end{itemize}
 
 	\subsection{References Maybe}
 	\begin{itemize}
-		\item samplers -- https://ask.audio/articles/understanding-the-architecture-of-sample-based-virtual-instruments
+		\item samplers -- https://ask.audio/articles/understanding-the-architecture-of-sample-based-virtual-instruments - how samplers work
 		\item subtractive -- Subtractive Synthesis Modelling of the Irish Uilleann Pipes - ISSTC 2012
 	\end{itemize}
 	
