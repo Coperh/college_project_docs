@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Project Extended Abstract}
+\author{Conor Holden }
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+
+
+
+\begin{document}
+	
+	\maketitle
+		
+		
+		
+\section{Introduction}
+
+	The purposed of this project was to create a virtual instrument of the uilleann pipes. There are
+	
+	\begin{itemize}
+		
+		\item Intro
+			\begin{itemize}
+				\item Describe 
+			\end{itemize}
+		
+		
+			\begin{itemize}
+				\item Physical Modelling
+				\item VST, AU interfaces that allow you to connect with DAWs
+				\item Juce \& iplug 2
+			\end{itemize}
+		
+	\end{itemize}
+
+\section{Analysis}
+
+	\subsection{Physical Modelling Synthesis}
+ 	
+
+	\subsection{Subtractive Synthesis}
+	
+	One of the potential ways to create a virtual uilleann pipes would be using subtractive synthesis. This involved using complex
+	waveforms and subtracting frequencies of the sound using filters, envelopes and low frequency oscillator. Following the
+	research on subtractive synthesis for the uillean pipes by T. Ó Póil et al and using a fully featured subtractive synthesiser,
+	in this case Sylenth1 by LennarDigital, it is possible to create a very convincing sound. Given enough time and experience with
+	this type of synthesis, it would be possible to create an almost indistinguishable sound.
+	
+	However, creating a subtractive synthesiser within the time of this project just to play uilleann pipes would be difficult and
+	frankly, pointless. Especially when there are many fully featured synthesisers with years of support and updates available, 
+	even some that are free, which would be easier to use and create a better sounding result.
+	
+	\subsection{Sampler Synthesiser}
+	Arguably the most obvious and intuitive way to create a virtual instrument is to create a sampler instrument. This type will
+	play samples or sound recordings on a key press. Some samplers, such as drum kits, are as simple as that. Each key will play
+	a single sound once. For other instruments, it can be more complicated where notes consist of multiple samples. There
+	might be samples for the beginning, the sustain and the end of the note, as well as different intensities when playing a note.
+	
+	After analysing the previous two methods and attempting the latter, it was eventually decided on the implement the
+	uilleann pipes as a sampler. 
+	
+	
+	\subsection{Technologies}
+	The goal is to make instrument plugins that can be used in digital audio work stations, such as Abelton Live or FL Studio,
+	and to do that, it needs to be in a certain format. The two most popular formats are VST and AU. Virtual Studio Technology or
+	VST, is an interface developed by Steinberg for their DAW Cubase that allowed third part party instruments and effects to be 
+	used with it. It has been licensed to other DAW developers and has become the most popular format. 
+	Audio Units or AU is a format developed by Apple for Logic Pro and have since been implemented into MacOS and IOS for 
+	other applications to use. 
+	
+	Both VST and AU allow the creation of plugins but you would have to do all the hard work yourself. Instead, a higher level
+	framework would be used. A potential candidate was iPlug2, an open source framework that can compile to many different 
+	formats including VST and AU. However, it is relatively new from 2018, it lacked the documentation and tutorials needed
+	to use it for this project.
+	
+	The second framework found and chosen is JUCE. Similarly to iPlug2, it can be compiled to many different formats from a 
+	single code base. What differs is that JUCE is much older and has extensive documentation on all the classes it provides
+	for create audio applications and audio processing. JUCE also has a relatively big community that create tutorials and provide
+	help for newcomers with questions. The only issues are that JUCE has separate code layout for audio applications and plugins
+	and it can be difficult translating tutorials for applications to plugins. As well, JUCE 6 was released in June, 2020 and 
+	some information is for the older versions.
+	
+		
+\section{Design}
+	The uilleann pipes will be implemented as a sampler instrument using the JUCE plugin format. 
+	
+	\subsection{Layout}
+	
+	\subparagraph{}		
+		
+		
+\section {evaluation}
+need more samples, artefacts, distortion
+		
+	
+	
+	
+	
+	
+	\section{References}
+	\begin{itemize}
+		\item \href{http://mural.maynoothuniversity.ie/4106/}
+		{Analysis tools and Results for a Subtractive Synthesis Modelling of the Irish Uilleann Pipes }
+		
+	\end{itemize}	
+		
+		
+\end{document}
