@@ -4,53 +4,38 @@
 \title{Project Extended Abstract}
 \author{Conor Holden }
 
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,      
-	urlcolor=cyan,
-}
-
-
+\usepackage{biblatex}
+\addbibresource{references.bib}
 
 
 \begin{document}
 	
 	\maketitle
 		
-		
-		
 \section{Introduction}
 
-	The purposed of this project was to create a virtual instrument of the uilleann pipes. There are
+	The purposed of this project was to create a virtual instrument of the uilleann pipes. This instrument would accept MIDI input and can be used with a modern digital audio workstation. The instrument would be in the VST plugin format that would allow it to 
+	interface with many audio programs. In the end, it should sound reasonably good and would be able to play both the chanter 
+	and drones of the uilleann pipes.
 	
-	\begin{itemize}
-		
-		\item Intro
-			\begin{itemize}
-				\item Describe 
-			\end{itemize}
-		
-		
-			\begin{itemize}
-				\item Physical Modelling
-				\item VST, AU interfaces that allow you to connect with DAWs
-				\item Juce \& iplug 2
-			\end{itemize}
-		
-	\end{itemize}
+	At first, the project explored the various ways of generating sounds in virtual instruments. Specifically looking into physical modelling, subtractive synthesis and, sampling. These methods were examined in relation to the uilleann pipes and determined
+	which one was the easiest to implement within the time of the project and which one created the best quality sound. After examining
+	them and testing two, the sampler was determined to best option.
+	
+	To implement the sampler, a framework was needed. Using the software development kit for the VST plugin format would require
+	making everything from scratch, which would have been difficult with limited knowledge. The framework chosen was
+	JUCE. This provided the ability to create plugins for various different formats and stand-alone applications. It has an
+	extensive set of classes and functions for audio programming and creating interfaces. Using JUCE, it was possible
+	to create a reasonable good sounding instrument using samples from the uilleann pipes.	
 
 \section{Analysis}
 
-	\subsection{Physical Modelling Synthesis}
- 	
-
+	
 	\subsection{Subtractive Synthesis}
 	
 	One of the potential ways to create a virtual uilleann pipes would be using subtractive synthesis. This involved using complex
 	waveforms and subtracting frequencies of the sound using filters, envelopes and low frequency oscillator. Following the
-	research on subtractive synthesis for the uilleann pipes by T. Ó Póil et al and using a fully featured subtractive synthesiser,
+	research on subtractive synthesis for the uilleann pipes\cite{uilleannSubtractive} by T. Ó Póil et al and using a fully featured subtractive synthesiser,
 	in this case Sylenth1 by LennarDigital, it is possible to create a very convincing sound. Given enough time and experience with
 	this type of synthesis, it would be possible to create an almost indistinguishable sound.
 	
@@ -70,7 +55,7 @@
 	
 	
 	\subsection{Technologies}
-	The goal is to make instrument plugins that can be used in digital audio work stations, such as Abelton Live or FL Studio,
+	The goal is to make instrument plugins that can be used in digital audio work stations, such as Ableton Live or FL Studio,
 	and to do that, it needs to be in a certain format. The two most popular formats are VST and AU. Virtual Studio Technology or
 	VST, is an interface developed by Steinberg for their DAW Cubase that allowed third part party instruments and effects to be 
 	used with it. It has been licensed to other DAW developers and has become the most popular format. 
@@ -97,12 +82,12 @@
 	
 	\subsection{Layout}
 	There will only be 5 controls on the screen. There will be 3 volume sliders. Both the chanter and the drones will have their
-	separate volume slider and a third master slider that will control the overall volume of the instrument.
+	separate volume slider and there will be a third master slider that will control the overall volume of the instrument.
 	The plugin will have an on screen keyboard. This will allow the user to play notes on the chanter by clicking on screen.
 	Finally will be a button to toggle the drone. When enabled the drone will play and disable it will stop. The idea is that
 	this option can be toggled on and off using the DAW's automation.
 	
-	\subsection{Creating Sound}		
+	\subsection{Creating Sound With Sampling}		
 	For this project, there was no access to uilleann pipes. Usually when creating a sample, you would record high quality audio
 	of the instrument. For the uilleann pipes, this would be the chanter and the three drones. However, the project was limited to
 	find relatively low quality samples online.
@@ -112,36 +97,49 @@
 	the audio is suddenly stopped.
 	
 	The chanter is more complex. Ideally there would be a sample for every note or every type of note, but there was only one
-	for this project. So the pitch of the sampled needed to be changed for every key. This is done by getting the frequency of 
+	for some time. So the pitch of the sampled needed to be changed for every key. This is done by getting the frequency of 
 	the sample and playing it proportionally faster or slower to make the frequency of a different notes. The same note in 
 	different octaves, an octave higher has a frequency twice as high and an octave lower has a frequency half of the current note.
 	This means that the sample can either be played at twice the speed or half the speed to achieve these notes. For other notes,
 	it involves dividing the desired frequency by the frequency of the sample. This will give the rate at which the sample 
-	needs to be played
-		
-		
-\section {evaluation}
-\begin{itemize}
-	\item need more samples
-	\item artefacts, distortion
-	\item 
-\end{itemize}
-
- 
-
-
-		
+	needs to be played.
+	
+	Later, more samples were acquired which allowed a sample for each note. Since the uilleann pipes only have about two
+	octaves of notes, it is not that many. Instead of having one sample and then pitching it to match other notes, there will be one 
+	sample for each possible note on the uilleann pipes. When a key is played, the sample for that key will be played. If the key
+	is not possible, then no sound is played. The drones remained unchanged. 
 	
 	
+	\subsection{Creating Sound With Subtractive Synthesis}
+	This was the original attempt which was later replaced with the above method.
+	According to the presentation by T. Ó Póil \cite{uilleannSubtractive} et al, the uilleann pipe sound is mostly made up of saw and triangle waves. Through
+	experimenting with a subtractive synthesiser, pulse waves also seemed to work well. For the chanter, it would use two wave 
+	functions per note. When the note is played, these functions would output the waves of those frequencies for that note.
+	The drones will work similarly. Since there are three drones, there will be three wave function pairs, each which will play
+	the note of a drone. When toggled on, all three drones will play continuously.
 	
-	
-	
-	\section{References}
-	\begin{itemize}
-		\item \href{http://mural.maynoothuniversity.ie/4106/}
-		{Analysis tools and Results for a Subtractive Synthesis Modelling of the Irish Uilleann Pipes }
 		
-	\end{itemize}	
 		
+\section {Evaluation}
+	
+	The major issue that occurred in the project was the lack of samples. Due to the original intent being to make
+	a physical model synthesiser, it never occurred to acquire uilleann pipes to record samples. At first, this meant that 
+	there was only one sample that needed to be pitch shifted. This worked fine with the same note in different octaves. Lower
+	notes worked almost flawlessly while higher notes only had minimal distortion. However, while every other note does sound correct,
+	they have obvious distortion and artefacting that makes the instrument not really usable. It would need some sort of interpolation
+	to remove these affects. It could also be possible to change the pitch of the sample in software that already have these features.
+	
+	Recording high quality samples of all notes will remove the need for pitch shifting and thus removes the distortion. Of course
+	this leads to more audio files and potentially a much greater file size. In the case of the uilleann pipes, it only has two octave
+	of notes, so this is not actually that much. For this project, only included the sustained notes sampled. When making a proper
+	sampler, recording 
+	
+	The only downside compared to the above method is that the instrument is limited to those notes. 
+	Since there are more notes, changing octaves would be easier but there are some notes the uilleann pipes cannot play,
+	no matter the octave and must be artificially created.
+		
+	
+\printbibliography
+	
 		
 \end{document}
